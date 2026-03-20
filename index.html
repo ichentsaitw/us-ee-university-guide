@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美國 EE 大學部前 30 選校指南｜台灣學生版</title>
+<meta name="description" content="針對台灣國際學生的美國電機工程大學部前 30 名校深度分析，涵蓋 OPT、H1B、就業前景、校園壓力、台灣人社群等關鍵面向。">
+<style>
+  :root {
+    --navy: #1a365d;
+    --blue: #2b6cb0;
+    --lblue: #ebf4ff;
+    --green: #276749;
+    --lgreen: #f0fff4;
+    --orange: #c05621;
+    --gold: #b7791f;
+    --gray: #4a5568;
+    --lgray: #f7fafc;
+    --border: #e2e8f0;
+    --radius: 12px;
+    --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', sans-serif;
+    background: #f0f4f8; color: #2d3748; line-height: 1.6; font-size: 15px; }
+
+  /* Header */
+  .site-header { background: linear-gradient(135deg, var(--navy) 0%, #2b6cb0 100%);
+    color: white; padding: 24px 16px 20px; text-align: center; position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.2); }
+  .site-header h1 { font-size: 1.3rem; font-weight: 700; line-height: 1.3; margin-bottom: 4px; }
+  .site-header p { font-size: 0.82rem; opacity: 0.85; }
+
+  /* Search bar */
+  .search-bar { padding: 12px 16px; background: white; border-bottom: 1px solid var(--border);
+    position: sticky; top: 88px; z-index: 90; display: flex; gap: 8px; flex-wrap: wrap; }
+  .search-input { flex: 1; min-width: 160px; padding: 9px 14px; border: 1.5px solid var(--border);
+    border-radius: 8px; font-size: 14px; outline: none; transition: border-color 0.2s; }
+  .search-input:focus { border-color: var(--blue); }
+  .filter-btns { display: flex; gap: 6px; flex-wrap: wrap; }
+  .filter-btn { padding: 8px 14px; border: 1.5px solid var(--border); border-radius: 8px;
+    background: white; font-size: 13px; cursor: pointer; transition: all 0.2s; color: var(--gray); }
+  .filter-btn.active, .filter-btn:hover { background: var(--navy); color: white; border-color: var(--navy); }
+
+  /* Main layout */
+  .main { max-width: 780px; margin: 0 auto; padding: 16px; }
+
+  /* Intro */
+  .intro-box { background: white; border-radius: var(--radius); padding: 18px;
+    margin-bottom: 16px; box-shadow: var(--shadow); border-left: 4px solid var(--blue); }
+  .intro-box h2 { font-size: 1rem; color: var(--navy); margin-bottom: 10px; }
+  .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .intro-item { background: var(--lgray); border-radius: 8px; padding: 12px; font-size: 13px; }
+  .intro-item strong { display: block; color: var(--navy); margin-bottom: 4px; font-size: 13px; }
+
+  /* Summary table */
+  .summary-box { background: white; border-radius: var(--radius); padding: 16px;
+    margin-bottom: 20px; box-shadow: var(--shadow); overflow-x: auto; }
+  .summary-box h2 { font-size: 1rem; color: var(--navy); margin-bottom: 12px; }
+  .summary-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .summary-table th { background: var(--navy); color: white; padding: 8px 10px;
+    text-align: left; font-weight: 600; white-space: nowrap; }
+  .summary-table td { padding: 7px 10px; border-bottom: 1px solid var(--border);
+    vertical-align: middle; cursor: pointer; }
+  .summary-table tr:hover td { background: var(--lblue); }
+  .summary-table .alt-row td { background: var(--lgray); }
+  .summary-table .alt-row:hover td { background: var(--lblue); }
+  .rank-cell { font-weight: 700; color: var(--blue); }
+  .name-cell { font-weight: 600; }
+  .best-cell { color: var(--gray); font-size: 12px; }
+  .stars-sm { font-size: 12px; white-space: nowrap; }
+
+  /* Cards */
+  .tier-section-header { font-size: 1.05rem; font-weight: 700; padding: 10px 4px;
+    color: var(--navy); border-bottom: 2px solid var(--blue); margin: 24px 0 12px; }
+  .card { background: white; border-radius: var(--radius); padding: 16px;
+    margin-bottom: 12px; box-shadow: var(--shadow); transition: transform 0.15s; }
+  .card:hover { transform: translateY(-1px); }
+  .card-header { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 10px; }
+  .rank-badge { background: var(--navy); color: white; font-size: 1.1rem; font-weight: 800;
+    width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center;
+    justify-content: center; flex-shrink: 0; }
+  .card-title-group { flex: 1; min-width: 0; }
+  .school-name { font-size: 1rem; font-weight: 700; color: var(--navy); line-height: 1.3;
+    word-break: break-word; }
+  .card-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 5px; align-items: center; }
+  .tag { padding: 2px 8px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+  .tag-public { background: #e6fffa; color: #234e52; }
+  .tag-private { background: #fef3c7; color: #78350f; }
+  .tag-state { background: var(--lblue); color: var(--navy); }
+  .city-text { font-size: 12px; color: var(--gray); }
+  .tier-badge { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px;
+    display: inline-block; margin-bottom: 8px; }
+  .best-for { font-size: 13px; color: var(--navy); background: var(--lgray);
+    border-radius: 8px; padding: 8px 12px; margin-bottom: 10px; }
+  .ratings-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 12px; }
+  .rating-item { display: flex; flex-direction: column; gap: 2px; background: var(--lgray);
+    border-radius: 8px; padding: 8px 10px; }
+  .rating-label { font-size: 11px; color: var(--gray); font-weight: 600; }
+  .stars { font-size: 14px; }
+  .stars-jobs { color: #276749; }
+  .stars-ceil { color: #2b6cb0; }
+  .stars-stress { color: #c05621; }
+  .stars-tw { color: #b7791f; }
+
+  /* Expand button */
+  .expand-btn { width: 100%; padding: 9px; background: var(--lblue); border: none;
+    border-radius: 8px; color: var(--blue); font-size: 13px; font-weight: 600;
+    cursor: pointer; transition: background 0.2s; }
+  .expand-btn:hover { background: #bee3f8; }
+  .expand-btn.open { background: var(--navy); color: white; }
+
+  /* Detail panel */
+  .detail-panel { display: none; padding-top: 14px; }
+  .detail-panel.open { display: block; }
+  .detail-section { display: flex; gap: 10px; margin-bottom: 12px;
+    background: var(--lgray); border-radius: 8px; padding: 12px; }
+  .detail-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
+  .detail-label { font-size: 12px; font-weight: 700; color: var(--navy); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .detail-text { font-size: 13px; color: #374151; line-height: 1.65; }
+  .tuition-badge { display: inline-block; background: #fef3c7; color: #78350f;
+    padding: 5px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-top: 4px; }
+
+  /* Info note */
+  .info-note { background: #fff8e1; border-left: 4px solid #f6ad55; border-radius: 0 8px 8px 0;
+    padding: 12px 14px; font-size: 13px; margin-bottom: 20px; color: #744210; }
+
+  /* Footer */
+  .site-footer { text-align: center; padding: 24px 16px; font-size: 12px; color: var(--gray);
+    border-top: 1px solid var(--border); margin-top: 32px; }
+
+  /* Hidden */
+  .card.hidden { display: none; }
+
+  @media (max-width: 480px) {
+    .site-header h1 { font-size: 1.1rem; }
+    .intro-grid { grid-template-columns: 1fr; }
+    .ratings-row { grid-template-columns: 1fr 1fr; }
+    .summary-table { font-size: 12px; }
+    .summary-table th, .summary-table td { padding: 6px 7px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <h1>🇺🇸 美國 EE 大學部前 30 選校指南</h1>
+  <p>專為台灣國際學生設計　|　涵蓋 OPT・H1B・就業・校園生活完整分析</p>
+</header>
+
+<div class="search-bar">
+  <input type="text" class="search-input" id="searchInput" placeholder="🔍 搜尋學校名稱、州別、方向…" oninput="filterCards()">
+  <div class="filter-btns">
+    <button class="filter-btn active" onclick="filterTier(0, this)">全部</button>
+    <button class="filter-btn" onclick="filterTier(1, this)">Tier 1</button>
+    <button class="filter-btn" onclick="filterTier(2, this)">Tier 2</button>
+    <button class="filter-btn" onclick="filterTier(3, this)">Tier 3</button>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="intro-box">
+    <h2>📖 閱讀前必知</h2>
+    <div class="intro-grid">
+      <div class="intro-item">
+        <strong>🛂 STEM OPT = 36 個月</strong>
+        EE 屬 STEM，畢業後可工作 36 個月（12 + 24 延期），給你三次 H1B 抽籤機會。
+      </div>
+      <div class="intro-item">
+        <strong>🎰 H1B 抽籤現實</strong>
+        每年 4 月抽籤，一般名額 65,000。近年抽中率約 30–40%，三次累積機率超過 75%。
+      </div>
+      <div class="intro-item">
+        <strong>💡 大學部 vs. 碩士</strong>
+        大學部 H1B 只能抽 65K 一般名額，沒有碩士的額外 20K 加成，更需要提早累積大廠實習。
+      </div>
+      <div class="intro-item">
+        <strong>💰 四年花費參考</strong>
+        頂尖私立約 $300K–$360K 美元（台幣 1,000–1,200 萬），公立約 $200K–$250K。
+      </div>
+    </div>
+  </div>
+
+  <div class="summary-box">
+    <h2>📊 快速比較表（點擊任一列跳到詳細說明）</h2>
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>#</th><th>學校</th><th>州</th>
+          <th>就業</th><th>發展</th><th>壓力</th><th>強項方向</th>
+        </tr>
+      </thead>
+      <tbody>
+  <tr class="" onclick="scrollToCard(1)">
+    <td class="rank-cell">1</td>
+    <td class="name-cell">MIT</td>
+    <td>MA</td>
+    <td><span class="stars-sm stars-jobs">★★★★★</span></td>
+    <td><span class="stars-sm stars-ceil">★★★★★</span></td>
+    <td><span class="stars-sm stars-stress">★★★★★</span></td>
+    <td class="best-cell">AI 硬體</td>
+  </tr>
+
+  <tr class="alt-row" onclick="scrollToCard(2)">
+    <td class="rank-cell">2</td>
+    <td class="name-cell">Stanford</td>
+    <td>CA</td>
+    <td><span class="stars-sm stars-jobs">★★★★★</span></td>
+    <td><span class="stars-sm stars-ceil">★★★★★</span></td>
+    <td><span class="stars-sm stars-stress">★★★★☆</span></td>
+    <td class="best-cell">AI 硬體</td>
+  </tr>
+
+  <tr class="" onclick="scrollToCard(3)">
+    <td class="rank-cell">3</td>
+    <td class="name-cell">Caltech</td>
+    <td>CA</td>
+    <td><span class="stars-sm stars-jobs">★★★★★</span></td>
+    <td><span class="stars-sm stars-ceil">★★★★★</span></td>
+    <td><span class="stars-sm stars-stress">★★★★★</span></td>
+    <td class="best-cell">通訊理論</td>
+  </tr>
+
+  <tr class="alt-row" onclick="scrollToCard(4)">
+    <td class="rank-cell">4</td>
+    <td class="name-cell">UC Berkeley</td>
+    <td>CA</td>
+    <td><span class="stars-sm stars-jobs">★★★★★</span></td>
+    <td><span class="stars-sm stars-ceil">★★★★★</span></td>
+    <td><span class="stars-sm stars-stress">★★★★☆</span></td>
+    <td class="best-cell">IC 設計</td>
+  </tr>
+
+  <tr class="" onclick="scrollToCard(5)">
+    <td class="rank-cell">5</td>
+    <td class="name-cell">Georgia Tech</td>
+    <td>GA</td>
+    <td><span class="stars-sm stars-jobs">★★★★★</span></td>
+    <td><span class="stars-sm stars-ceil">★★★★☆</span></td>
+    <td><span class="stars-sm stars-stress">★★★★☆</span></td>
+    <td class="best-cell">RF/毫米波 IC</td>
+  </tr>
+
+  <tr class="alt-row" onclick="scrollToCard(6)">
+    <td class="rank-cell">6</td>
+    <td class="name-cell">UIUC</td>
+    <td>IL</td>
+    <td><span class="stars-sm stars-jobs">★★★★★</span></td>
+    <td><span class="stars-sm stars-ceil">★★★★★</span></td>
+    <td><span class="stars-sm stars-stress">★★★★☆</span></td>
+    <td class="best-cell">IC 設計</td>
+  </tr>
+
+  <tr class="" onclick="scrollToCard(7)">
+    <td class="rank-cell">7</td>
+    <td class="name-cell">CMU</td>
+    <td>PA</td>
+    <td><span class="stars-sm stars-jobs">★★★★★</span></td>
+    <td><span class="stars-sm stars-ceil">★★★★★</span></td>
+    <td><span class="stars-sm stars-stress">★★★★★</span></td>
+    <td class="best-cell">AI/ML 硬體</td>
+  </tr>
+
+  <tr class="alt-row" onclick="scrollToCard(8)">
+    <td class="rank-cell">8</td>
+    <td class="name-cell">Purdue</td>
+    <td>IN</td>
+    <td><span class="stars-sm stars-jobs">★★★★★</span></td>
+    <td><span class="stars-sm stars-ceil">★★★★☆</span></td>
+    <td><span class="stars-sm stars-stress">★★★★☆</span></td>
+    <td class="best-cell">半導體製程/物理</td>
+  </tr>
+
+  <tr class="" onclick="scrollToCard(9)">
+    <td class="rank-cell">9</td>
+    <td class="name-cell">U Michigan</td>
+    <td>MI</td>
+    <td><span class="stars-sm stars-jobs">★★★★★</span></td>
+    <td><span class="stars-sm stars-ceil">★★★★☆</span></td>
+    <td><span class="stars-sm stars-stress">★★★★☆</span></td>
+    <td class="best-cell">電動車電子</td>
+  </tr>
+
+  <tr class="alt-row" onclick="scrollToCard(10)">
+    <td class="rank-cell">10</td>
+    <td class="name-cell">Cornell</td>
+    <td>NY</td>
+    <td><span class="stars-sm stars-jobs">★★★★★</span></td>
+    <td><span class="stars-sm stars-ceil">★★★★★</span></td>
+    <td><span class="stars-sm stars-stress">★★★★☆</span></td>
+    <td class="best-cell">奈米光電</td>
+  </tr>
+
+  <tr class="" onclick="scrollToCard(11)">
+    <td class="rank-cell">11</td>
+    <td class="name-cell">Princeton</td>
+    <td>NJ</td>
+    <td><span class="stars-sm stars-jobs">★★★★★</span></td>
+    <td><span class="stars-sm stars-ceil">★★★★★</span></td>
+    <td><span class="stars-sm stars-stress">★★★★☆</span></td>
+    <td class="best-cell">通訊理論</td>
+  </tr>
+
+  <tr class="alt-row" onclick="scrollToCard(12)">
+    <td class="rank-cell">12</td>
+    <td class="name-cell">UCLA</td>
+    <td>CA</td>
+    <td><span class="stars-sm stars-jobs">★★★★★</span></td>
+    <td><span class="stars-sm stars-ceil">★★★★☆</span></td>
+    <td><span class="stars-sm stars-stress">★★★☆☆</span></td>
+    <td class="best-cell">光電</td>
+  </tr>
+
+  <tr class="" onclick="scrollToCard(13)">
+    <td class="rank-cell">13</td>
+    <td class="name-cell">UT Austin</td>
+    <td>TX</td>
+    <td><span class="stars-sm stars-jobs">★★★★★</span></td>
+    <td><span class="stars-sm stars-ceil">★★★★☆</span></td>
+    <td><span class="stars-sm stars-stress">★★★☆☆</span></td>
+    <td class="best-cell">IC 設計</td>
+  </tr>
+
+  <tr class="alt-row" onclick="scrollToCard(14)">
+    <td class="rank-cell">14</td>
+    <td class="name-cell">U Washington</td>
+    <td>WA</td>
+    <td><span class="stars-sm stars-jobs">★★★★★</span></td>
+    <td><span class="stars-sm stars-ceil">★★★★☆</span></td>
+    <td><span class="stars-sm stars-stress">★★★☆☆</span></td>
+    <td class="best-cell">AI/ML 系統</td>
+  </tr>
+
+  <tr class="" onclick="scrollToCard(15)">
+    <td class="rank-cell">15</td>
+    <td class="name-cell">Johns Hopkins</td>
+    <td>MD</td>
+    <td><span class="stars-sm stars-jobs">★★★★☆</span></td>
+    <td><span class="stars-sm stars-ceil">★★★★☆</span></td>
+    <td><span class="stars-sm stars-stress">★★★★☆</span></td>
+    <td class="best-cell">生醫電子</td>
+  </tr>
+
+  <tr class="alt-row" onclick="scrollToCard(16)">
+    <td class="rank-cell">16</td>
+    <td class="name-cell">Duke</td>
+    <td>NC</td>
+    <td><span class="stars-sm stars-jobs">★★★★☆</span></td>
+    <td><span class="stars-sm stars-ceil">★★★★☆</span></td>
+    <td><span class="stars-sm stars-stress">★★★★☆</span></td>
+    <td class="best-cell">功率電子</td>
+  </tr>
+
+  <tr class="" onclick="scrollToCard(17)">
+    <td class="rank-cell">17</td>
+    <td class="name-cell">Northwestern</td>
+    <td>IL</td>
+    <td><span class="stars-sm stars-jobs">★★★★☆</span></td>
+    <td><span class="stars-sm stars-ceil">★★★★★</span></td>
+    <td><span class="stars-sm stars-stress">★★★★☆</span></td>
+    <td class="best-cell">奈米電子</td>
+  </tr>
+
+  <tr class="alt-row" onclick="scrollToCard(18)">
+    <td class="rank-cell">18</td>
+    <td class="name-cell">Rice</td>
+    <td>TX</td>
+    <td><span class="stars-sm stars-jobs">★★★★☆</span></td>
+    <td><span class="stars-sm stars-ceil">★★★★☆</span></td>
+    <td><span class="stars-sm stars-stress">★★★☆☆</span></td>
+    <td class="best-cell">能源科技電子</td>
+  </tr>
+
+  <tr class="" onclick="scrollToCard(19)">
+    <td class="rank-cell">19</td>
+    <td class="name-cell">UC San Diego</td>
+    <td>CA</td>
+    <td><span class="stars-sm stars-jobs">★★★★★</span></td>
+    <td><span class="stars-sm stars-ceil">★★★★☆</span></td>
+    <td><span class="stars-sm stars-stress">★★★☆☆</span></td>
+    <td class="best-cell">RF 通訊</td>
+  </tr>
+
+  <tr class="alt-row" onclick="scrollToCard(20)">
+    <td class="rank-cell">20</td>
+    <td class="name-cell">Ohio State</td>
+    <td>OH</td>
+    <td><span class="stars-sm stars-jobs">★★★★★</span></td>
+    <td><span class="stars-sm stars-ceil">★★★★☆</span></td>
+    <td><span class="stars-sm stars-stress">★★★☆☆</span></td>
+    <td class="best-cell">半導體製程</td>
+  </tr>
+
+  <tr class="" onclick="scrollToCard(21)">
+    <td class="rank-cell">21</td>
+    <td class="name-cell">UW-Madison</td>
+    <td>WI</td>
+    <td><span class="stars-sm stars-jobs">★★★★☆</span></td>
+    <td><span class="stars-sm stars-ceil">★★★☆☆</span></td>
+    <td><span class="stars-sm stars-stress">★★★☆☆</span></td>
+    <td class="best-cell">電力電子</td>
+  </tr>
+
+  <tr class="alt-row" onclick="scrollToCard(22)">
+    <td class="rank-cell">22</td>
+    <td class="name-cell">Penn State</td>
+    <td>PA</td>
+    <td><span class="stars-sm stars-jobs">★★★★☆</span></td>
+    <td><span class="stars-sm stars-ceil">★★★☆☆</span></td>
+    <td><span class="stars-sm stars-stress">★★★☆☆</span></td>
+    <td class="best-cell">電力電子</td>
+  </tr>
+
+  <tr class="" onclick="scrollToCard(23)">
+    <td class="rank-cell">23</td>
+    <td class="name-cell">USC</td>
+    <td>CA</td>
+    <td><span class="stars-sm stars-jobs">★★★★☆</span></td>
+    <td><span class="stars-sm stars-ceil">★★★★☆</span></td>
+    <td><span class="stars-sm stars-stress">★★★☆☆</span></td>
+    <td class="best-cell">通訊</td>
+  </tr>
+
+  <tr class="alt-row" onclick="scrollToCard(24)">
+    <td class="rank-cell">24</td>
+    <td class="name-cell">UC Santa Barbara</td>
+    <td>CA</td>
+    <td><span class="stars-sm stars-jobs">★★★★☆</span></td>
+    <td><span class="stars-sm stars-ceil">★★★★★</span></td>
+    <td><span class="stars-sm stars-stress">★★★☆☆</span></td>
+    <td class="best-cell">量子計算硬體</td>
+  </tr>
+
+  <tr class="" onclick="scrollToCard(25)">
+    <td class="rank-cell">25</td>
+    <td class="name-cell">Virginia Tech</td>
+    <td>VA</td>
+    <td><span class="stars-sm stars-jobs">★★★★☆</span></td>
+    <td><span class="stars-sm stars-ceil">★★★☆☆</span></td>
+    <td><span class="stars-sm stars-stress">★★★☆☆</span></td>
+    <td class="best-cell">電力電子</td>
+  </tr>
+
+  <tr class="alt-row" onclick="scrollToCard(26)">
+    <td class="rank-cell">26</td>
+    <td class="name-cell">Texas A&M</td>
+    <td>TX</td>
+    <td><span class="stars-sm stars-jobs">★★★★☆</span></td>
+    <td><span class="stars-sm stars-ceil">★★★☆☆</span></td>
+    <td><span class="stars-sm stars-stress">★★★☆☆</span></td>
+    <td class="best-cell">半導體製程</td>
+  </tr>
+
+  <tr class="" onclick="scrollToCard(27)">
+    <td class="rank-cell">27</td>
+    <td class="name-cell">U Maryland</td>
+    <td>MD</td>
+    <td><span class="stars-sm stars-jobs">★★★★☆</span></td>
+    <td><span class="stars-sm stars-ceil">★★★★☆</span></td>
+    <td><span class="stars-sm stars-stress">★★★☆☆</span></td>
+    <td class="best-cell">量子計算</td>
+  </tr>
+
+  <tr class="alt-row" onclick="scrollToCard(28)">
+    <td class="rank-cell">28</td>
+    <td class="name-cell">Northeastern</td>
+    <td>MA</td>
+    <td><span class="stars-sm stars-jobs">★★★★★</span></td>
+    <td><span class="stars-sm stars-ceil">★★★★☆</span></td>
+    <td><span class="stars-sm stars-stress">★★★★☆</span></td>
+    <td class="best-cell">RF/5G</td>
+  </tr>
+
+  <tr class="" onclick="scrollToCard(29)">
+    <td class="rank-cell">29</td>
+    <td class="name-cell">RPI</td>
+    <td>NY</td>
+    <td><span class="stars-sm stars-jobs">★★★★☆</span></td>
+    <td><span class="stars-sm stars-ceil">★★★☆☆</span></td>
+    <td><span class="stars-sm stars-stress">★★★★☆</span></td>
+    <td class="best-cell">半導體製程（GlobalFoundries）</td>
+  </tr>
+
+  <tr class="alt-row" onclick="scrollToCard(30)">
+    <td class="rank-cell">30</td>
+    <td class="name-cell">Arizona State</td>
+    <td>AZ</td>
+    <td><span class="stars-sm stars-jobs">★★★★★</span></td>
+    <td><span class="stars-sm stars-ceil">★★★☆☆</span></td>
+    <td><span class="stars-sm stars-stress">★★☆☆☆</span></td>
+    <td class="best-cell">半導體製程（TSMC 就業）</td>
+  </tr></tbody>
+    </table>
+  </div>
+
+  <div class="info-note">
+    ⭐ 評分說明：<strong>就業</strong> = 就業容易度、<strong>發展</strong> = 長期職涯天花板、<strong>壓力</strong> = 壓力程度（★越多壓力越大）。點選每張卡片展開詳細說明。
+  </div>
+
+  <div class="tier-section-header">🏆 Tier 1　頂尖菁英（#1–#10）</div>
+  <div id="tier1-cards">
+  <div cl</div>
+
+  <div class="tier-section-header">⭐ Tier 2　優秀強力（#11–#20）</div>
+  <div id="tier2-cards">ass="card"</div>
+
+  <div class="tier-section-header">✅ Tier 3　優質選擇（#21–#30）</div>
+  <div id="tier3-cards"> id="schoo</div>
+
+</div>
+
+<footer class="site-footer">
+  資料截至 2026 年 3 月　|　依據 US News 2026 大學部工程排名、QS 2025 EE 學科排名及業界招募趨勢綜合整理<br>
+  僅供參考，最終請以各校官網及 USCIS 官方公告為準　|　由 Claude AI 協助整理
+</footer>
+
+<script>
+let currentTier = 0;
+
+function toggleCard(btn) {
+  const panel = btn.nextElementSibling;
+  panel.classList.toggle('open');
+  btn.classList.toggle('open');
+  btn.textContent = panel.classList.contains('open') ? '收起 ▲' : '展開詳細說明 ▼';
+}
+
+function scrollToCard(rank) {
+  const card = document.getElementById('school-' + rank);
+  if (!card) return;
+  card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  card.style.outline = '2px solid #2b6cb0';
+  setTimeout(() => card.style.outline = '', 1500);
+  // auto-expand
+  const btn = card.querySelector('.expand-btn');
+  const panel = card.querySelector('.detail-panel');
+  if (!panel.classList.contains('open')) {
+    panel.classList.add('open');
+    btn.classList.add('open');
+    btn.textContent = '收起 ▲';
+  }
+}
+
+function filterTier(tier, el) {
+  currentTier = tier;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  applyFilter();
+}
+
+function filterCards() { applyFilter(); }
+
+function applyFilter() {
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  document.querySelectorAll('.card').forEach(card => {
+    const matchTier = currentTier === 0 || parseInt(card.dataset.tier) === currentTier;
+    const matchSearch = !q || card.dataset.name.includes(q) || card.dataset.state.includes(q) || card.dataset.best.includes(q);
+    card.classList.toggle('hidden', !(matchTier && matchSearch));
+  });
+  // show/hide tier headers
+  [1,2,3].forEach(t => {
+    const visible = [...document.querySelectorAll('.card[data-tier="' + t + '"]')].some(c => !c.classList.contains('hidden'));
+    const header = document.querySelector('.tier-section-header:nth-of-type(' + t + ')');
+  });
+}
+</script>
+</body>
+</html>
