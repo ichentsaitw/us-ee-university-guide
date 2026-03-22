@@ -38,16 +38,13 @@
   .site-header p { font-size: 0.82rem; color: #f0d0c0; opacity: 0.9;
     letter-spacing: 0.3px; }
 
-  /* Search bar */
-  .search-bar { padding: 12px 16px; background: white; border-bottom: 1px solid var(--border);
-    position: sticky; top: 92px; z-index: 90; display: flex; gap: 8px; flex-wrap: wrap; }
-  .search-input { flex: 1; min-width: 160px; padding: 10px 16px; border: 1.5px solid var(--border);
-    border-radius: 24px; font-size: 14px; outline: none; transition: all 0.2s; }
-  .search-input:focus { border-color: var(--lavender); box-shadow: 0 0 0 3px rgba(155,142,196,0.12); }
-  .filter-btns { display: flex; gap: 6px; flex-wrap: wrap; }
+  /* Navigation bar */
+  .search-bar { padding: 10px 16px; background: white; border-bottom: 1px solid var(--border);
+    position: sticky; top: 92px; z-index: 90; display: flex; justify-content: center; }
+  .filter-btns { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
   .filter-btn { padding: 8px 16px; border: 1.5px solid var(--border); border-radius: 24px;
-    background: white; font-size: 13px; cursor: pointer; transition: all 0.2s; color: var(--gray); }
-  .filter-btn.active, .filter-btn:hover { background: linear-gradient(135deg, #7a5980, #c47a7a);
+    background: white; font-size: 12.5px; cursor: pointer; transition: all 0.2s; color: var(--gray); }
+  .filter-btn:hover { background: linear-gradient(135deg, #7a5980, #c47a7a);
     color: white; border-color: transparent; box-shadow: 0 2px 10px rgba(122,89,128,0.2); }
 
   /* Main layout */
@@ -206,12 +203,11 @@
 </header>
 
 <div class="search-bar">
-  <input type="text" class="search-input" id="searchInput" placeholder="🔍 搜尋學校名稱、州別、方向…" oninput="filterCards()">
   <div class="filter-btns">
-    <button class="filter-btn active" onclick="filterTier(0, this)">全部</button>
-    <button class="filter-btn" onclick="filterTier(1, this)">Tier 1</button>
-    <button class="filter-btn" onclick="filterTier(2, this)">Tier 2</button>
-    <button class="filter-btn" onclick="filterTier(3, this)">Tier 3</button>
+    <button class="filter-btn" onclick="jumpTo('tier1')">🏆 Tier 1（#1–#10）</button>
+    <button class="filter-btn" onclick="jumpTo('tier2')">⭐ Tier 2（#11–#20）</button>
+    <button class="filter-btn" onclick="jumpTo('tier3')">✅ Tier 3（#21–#30）</button>
+    <button class="filter-btn" onclick="jumpTo('summary')">📊 比較表</button>
   </div>
 </div>
 
@@ -337,7 +333,7 @@
     </div>
   </div>
 
-  <div class="summary-box">
+  <div class="summary-box" id="summary">
     <h2>📊 快速比較表（點擊任一列跳到詳細說明）</h2>
     <table class="summary-table">
       <thead>
@@ -653,7 +649,7 @@
     ⭐ 評分說明：<strong>就業</strong> = 就業容易度、<strong>發展</strong> = 長期職涯天花板、<strong>壓力</strong> = 壓力程度（★越多壓力越大）。點選每張卡片展開詳細說明。
   </div>
 
-  <div class="tier-section-header">🏆 Tier 1　頂尖菁英（#1–#10）</div>
+  <div class="tier-section-header" id="tier1">🏆 Tier 1　頂尖菁英（#1–#10）</div>
   <div id="tier1-cards">
   <div class="card" id="school-1" data-tier="1" data-name="mit mit（麻省理工學院）" data-state="ma" data-best="ai 硬體・ic 設計・通訊理論">
     <div class="card-header">
@@ -1385,7 +1381,7 @@
     </div>
   </div></div>
 
-  <div class="tier-section-header">⭐ Tier 2　優秀強力（#11–#20）</div>
+  <div class="tier-section-header" id="tier2">⭐ Tier 2　優秀強力（#11–#20）</div>
   <div id="tier2-cards">
   <div class="card" id="school-11" data-tier="2" data-name="princeton princeton university（普林斯頓大學）" data-state="nj" data-best="通訊理論・量子計算・光電元件">
     <div class="card-header">
@@ -2117,7 +2113,7 @@
     </div>
   </div></div>
 
-  <div class="tier-section-header">✅ Tier 3　優質選擇（#21–#30）</div>
+  <div class="tier-section-header" id="tier3">✅ Tier 3　優質選擇（#21–#30）</div>
   <div id="tier3-cards">
   <div class="card" id="school-21" data-tier="3" data-name="uw-madison university of wisconsin-madison（威斯康辛大學麥迪遜分校）" data-state="wi" data-best="電力電子・微電子・訊號處理">
     <div class="card-header">
@@ -2857,8 +2853,6 @@
 </footer>
 
 <script>
-let currentTier = 0;
-
 function toggleH1B(btn) {
   const panel = btn.nextElementSibling;
   panel.classList.toggle('open');
@@ -2877,9 +2871,8 @@ function scrollToCard(rank) {
   const card = document.getElementById('school-' + rank);
   if (!card) return;
   card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  card.style.outline = '2px solid #2b6cb0';
+  card.style.outline = '2px solid #c47a7a';
   setTimeout(() => card.style.outline = '', 1500);
-  // auto-expand
   const btn = card.querySelector('.expand-btn');
   const panel = card.querySelector('.detail-panel');
   if (!panel.classList.contains('open')) {
@@ -2889,50 +2882,9 @@ function scrollToCard(rank) {
   }
 }
 
-function filterTier(tier, el) {
-  currentTier = tier;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  el.classList.add('active');
-  applyFilter();
-  scrollToResults();
-}
-
-function filterCards() {
-  applyFilter();
-  const q = document.getElementById('searchInput').value.trim();
-  if (q.length >= 2) scrollToResults();
-}
-
-function scrollToResults() {
-  const first = document.querySelector('.card:not(.hidden)');
-  if (first) {
-    setTimeout(() => first.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
-  }
-}
-
-function applyFilter() {
-  const q = document.getElementById('searchInput').value.toLowerCase();
-  let count = 0;
-  document.querySelectorAll('.card').forEach(card => {
-    const matchTier = currentTier === 0 || parseInt(card.dataset.tier) === currentTier;
-    const matchSearch = !q || card.dataset.name.includes(q) || card.dataset.state.includes(q) || card.dataset.best.includes(q);
-    const show = matchTier && matchSearch;
-    card.classList.toggle('hidden', !show);
-    if (show) count++;
-  });
-  // update result count
-  let hint = document.getElementById('filterHint');
-  if (!hint) {
-    hint = document.createElement('div');
-    hint.id = 'filterHint';
-    hint.style.cssText = 'font-size:12px;color:#7c8294;padding:6px 0 0;text-align:center;';
-    document.querySelector('.search-bar').appendChild(hint);
-  }
-  if (q || currentTier !== 0) {
-    hint.textContent = '顯示 ' + count + ' / 30 所學校';
-  } else {
-    hint.textContent = '';
-  }
+function jumpTo(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 </script>
 </body>
