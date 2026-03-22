@@ -2894,22 +2894,45 @@ function filterTier(tier, el) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   el.classList.add('active');
   applyFilter();
+  scrollToResults();
 }
 
-function filterCards() { applyFilter(); }
+function filterCards() {
+  applyFilter();
+  const q = document.getElementById('searchInput').value.trim();
+  if (q.length >= 2) scrollToResults();
+}
+
+function scrollToResults() {
+  const first = document.querySelector('.card:not(.hidden)');
+  if (first) {
+    setTimeout(() => first.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+  }
+}
 
 function applyFilter() {
   const q = document.getElementById('searchInput').value.toLowerCase();
+  let count = 0;
   document.querySelectorAll('.card').forEach(card => {
     const matchTier = currentTier === 0 || parseInt(card.dataset.tier) === currentTier;
     const matchSearch = !q || card.dataset.name.includes(q) || card.dataset.state.includes(q) || card.dataset.best.includes(q);
-    card.classList.toggle('hidden', !(matchTier && matchSearch));
+    const show = matchTier && matchSearch;
+    card.classList.toggle('hidden', !show);
+    if (show) count++;
   });
-  // show/hide tier headers
-  [1,2,3].forEach(t => {
-    const visible = [...document.querySelectorAll('.card[data-tier="' + t + '"]')].some(c => !c.classList.contains('hidden'));
-    const header = document.querySelector('.tier-section-header:nth-of-type(' + t + ')');
-  });
+  // update result count
+  let hint = document.getElementById('filterHint');
+  if (!hint) {
+    hint = document.createElement('div');
+    hint.id = 'filterHint';
+    hint.style.cssText = 'font-size:12px;color:#7c8294;padding:6px 0 0;text-align:center;';
+    document.querySelector('.search-bar').appendChild(hint);
+  }
+  if (q || currentTier !== 0) {
+    hint.textContent = '顯示 ' + count + ' / 30 所學校';
+  } else {
+    hint.textContent = '';
+  }
 }
 </script>
 </body>
