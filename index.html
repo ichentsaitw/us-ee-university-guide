@@ -38,14 +38,13 @@
   .site-header p { font-size: 0.82rem; color: #f0d0c0; opacity: 0.9;
     letter-spacing: 0.3px; }
 
-  /* Navigation bar */
-  .search-bar { padding: 10px 16px; background: white; border-bottom: 1px solid var(--border);
-    position: sticky; top: 110px; z-index: 90; display: flex; justify-content: center; }
-  .filter-btns { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
-  .filter-btn { padding: 8px 16px; border: 1.5px solid var(--border); border-radius: 24px;
-    background: white; font-size: 12.5px; cursor: pointer; transition: all 0.2s; color: var(--gray); }
-  .filter-btn:hover { background: linear-gradient(135deg, #7a5980, #c47a7a);
-    color: white; border-color: transparent; box-shadow: 0 2px 10px rgba(122,89,128,0.2); }
+  /* Navigation buttons inside header */
+  .header-nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-top: 12px; }
+  .filter-btn { padding: 6px 14px; border: 1.5px solid rgba(255,255,255,0.25); border-radius: 24px;
+    background: rgba(255,255,255,0.12); font-size: 12px; cursor: pointer; transition: all 0.2s;
+    color: rgba(255,255,255,0.85); backdrop-filter: blur(4px); }
+  .filter-btn:hover { background: rgba(255,255,255,0.3);
+    color: white; border-color: rgba(255,255,255,0.4); }
 
   /* Main layout */
   .main { max-width: 780px; margin: 0 auto; padding: 16px; }
@@ -85,8 +84,8 @@
   .stars-sm { font-size: 12px; white-space: nowrap; }
 
   /* Scroll offset for sticky header + nav */
-  .tier-section-header[id], .summary-box[id] { scroll-margin-top: 180px; }
-  .card[id] { scroll-margin-top: 180px; }
+  .tier-section-header[id], .summary-box[id] { scroll-margin-top: 150px; }
+  .card[id] { scroll-margin-top: 150px; }
 
   /* Cards */
   .tier-section-header { font-size: 1.05rem; font-weight: 700; padding: 12px 4px;
@@ -204,16 +203,13 @@
 <header class="site-header">
   <h1>美國 EE 大學部前 30 選校指南</h1>
   <p>Semiconductor &middot; IC Design &middot; RF &middot; Power &#x2014; 專為台灣國際學生設計</p>
-</header>
-
-<div class="search-bar">
-  <div class="filter-btns">
-    <button class="filter-btn" onclick="jumpTo('tier1')">🏆 Tier 1（#1–#10）</button>
-    <button class="filter-btn" onclick="jumpTo('tier2')">⭐ Tier 2（#11–#20）</button>
-    <button class="filter-btn" onclick="jumpTo('tier3')">✅ Tier 3（#21–#30）</button>
+  <div class="header-nav">
+    <button class="filter-btn" onclick="jumpTo('tier1')">🏆 Tier 1</button>
+    <button class="filter-btn" onclick="jumpTo('tier2')">⭐ Tier 2</button>
+    <button class="filter-btn" onclick="jumpTo('tier3')">✅ Tier 3</button>
     <button class="filter-btn" onclick="jumpTo('summary')">📊 比較表</button>
   </div>
-</div>
+</header>
 
 <div class="main">
 
@@ -2889,7 +2885,7 @@ function scrollToCard(rank) {
 function jumpTo(id) {
   const el = document.getElementById(id);
   if (!el) return;
-  const offset = 180;
+  const offset = 150;
   const top = el.getBoundingClientRect().top + window.scrollY - offset;
   window.scrollTo({ top: top, behavior: 'smooth' });
 }
