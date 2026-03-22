@@ -40,7 +40,7 @@
 
   /* Navigation bar */
   .search-bar { padding: 10px 16px; background: white; border-bottom: 1px solid var(--border);
-    position: sticky; top: 92px; z-index: 90; display: flex; justify-content: center; }
+    position: sticky; top: 85px; z-index: 90; display: flex; justify-content: center; }
   .filter-btns { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
   .filter-btn { padding: 8px 16px; border: 1.5px solid var(--border); border-radius: 24px;
     background: white; font-size: 12.5px; cursor: pointer; transition: all 0.2s; color: var(--gray); }
@@ -83,6 +83,10 @@
   .name-cell { font-weight: 600; color: #2d3142; }
   .best-cell { color: var(--gray); font-size: 12px; }
   .stars-sm { font-size: 12px; white-space: nowrap; }
+
+  /* Scroll offset for sticky header + nav */
+  .tier-section-header[id], .summary-box[id] { scroll-margin-top: 160px; }
+  .card[id] { scroll-margin-top: 160px; }
 
   /* Cards */
   .tier-section-header { font-size: 1.05rem; font-weight: 700; padding: 12px 4px;
@@ -2884,7 +2888,10 @@ function scrollToCard(rank) {
 
 function jumpTo(id) {
   const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (!el) return;
+  const offset = 130;
+  const top = el.getBoundingClientRect().top + window.scrollY - offset;
+  window.scrollTo({ top: top, behavior: 'smooth' });
 }
 </script>
 </body>
