@@ -158,6 +158,31 @@
   .school-photo { width: 100%; height: 180px; object-fit: cover; border-radius: 10px;
     margin-bottom: 12px; }
 
+  /* H1B pathways section */
+  .h1b-box { background: white; border-radius: var(--radius); padding: 18px;
+    margin-bottom: 16px; box-shadow: var(--shadow);
+    border-top: 3px solid; border-image: linear-gradient(90deg, #3a9e7e, #5b5e9e, #d4793a) 1; }
+  .h1b-box h2 { font-size: 1rem; color: var(--navy); margin-bottom: 12px; }
+  .h1b-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+  .h1b-item { background: var(--lgray); border-radius: 10px; padding: 14px; font-size: 13px;
+    border: 1px solid #f1f5f9; display: flex; gap: 12px; align-items: flex-start; }
+  .h1b-item .h1b-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+  .h1b-item .h1b-content { flex: 1; }
+  .h1b-item strong { display: block; color: #1e293b; margin-bottom: 3px; font-size: 13.5px; }
+  .h1b-item .h1b-tag { display: inline-block; padding: 1px 8px; border-radius: 12px;
+    font-size: 10px; font-weight: 700; margin-left: 6px; vertical-align: middle; }
+  .h1b-tag-sure { background: #ecfdf5; color: #047857; }
+  .h1b-tag-high { background: #eff6ff; color: #1d4ed8; }
+  .h1b-tag-boost { background: #fef3c7; color: #92400e; }
+  .h1b-toggle { width: 100%; padding: 10px; background: linear-gradient(135deg, #ecfdf5, #f0fdf4);
+    border: 1px solid #a7f3d0; border-radius: 10px; color: #047857; font-size: 13px;
+    font-weight: 600; cursor: pointer; transition: all 0.2s; margin-top: 8px; }
+  .h1b-toggle:hover { background: #d1fae5; }
+  .h1b-toggle.open { background: linear-gradient(135deg, #4a4a78, #5b5e9e);
+    color: white; border-color: transparent; }
+  .h1b-detail { display: none; margin-top: 10px; }
+  .h1b-detail.open { display: block; }
+
   /* Info note */
   .info-note { background: linear-gradient(135deg, #fffbeb, #fef3c7); border-left: 4px solid #f59e0b;
     border-radius: 0 10px 10px 0;
@@ -217,6 +242,104 @@
       <div class="intro-item">
         <strong>💰 四年花費參考</strong>
         頂尖私立約 $300K–$390K 美元（台幣 1,000–1,300 萬），公立約 $200K–$250K。
+      </div>
+    </div>
+  </div>
+
+  <div class="h1b-box">
+    <h2>🛂 留美路徑全攻略：不只有 H1B 抽籤</h2>
+    <p style="font-size:13px;color:#64748b;margin-bottom:12px;">除了 H1B 抽籤，EE 背景有多條確定性更高的留美路徑。越早規劃，選擇越多。</p>
+    <div class="h1b-grid">
+
+      <div class="h1b-item" style="border-left:3px solid #3a9e7e;">
+        <div class="h1b-icon">🏛️</div>
+        <div class="h1b-content">
+          <strong>Cap-Exempt H1B（免抽籤 H1B）<span class="h1b-tag h1b-tag-sure">確定</span></strong>
+          在大學、非營利研究機構、政府實驗室工作，H1B 不受名額限制、不需抽籤。例如：MIT Lincoln Lab、Sandia/Los Alamos 國家實驗室、各大學研究員/教職。EE 背景非常適合這條路。
+        </div>
+      </div>
+
+      <div class="h1b-item" style="border-left:3px solid #3a9e7e;">
+        <div class="h1b-icon">🌟</div>
+        <div class="h1b-content">
+          <strong>O-1 Visa（傑出人才簽證）<span class="h1b-tag h1b-tag-sure">確定</span></strong>
+          不需抽籤、無名額限制。需證明「在該領域有傑出能力」：IEEE 論文發表、專利、競賽獎項、高薪 offer、業界推薦信等。門檻比想像中低 — 不需要諾貝爾獎，有 2–3 篇論文 + 專利通常就可以申請。
+        </div>
+      </div>
+
+      <div class="h1b-item" style="border-left:3px solid #3a9e7e;">
+        <div class="h1b-icon">🪪</div>
+        <div class="h1b-content">
+          <strong>EB-1 直接申請綠卡<span class="h1b-tag h1b-tag-sure">確定</span></strong>
+          跳過 H1B，直接拿永久居留權。EB-1A（傑出人才）或 EB-1B（傑出教授/研究員）。PhD + 論文引用 + 審稿經驗通常可走這條路。EE PhD 畢業生的主流選擇之一。
+        </div>
+      </div>
+
+      <div class="h1b-item" style="border-left:3px solid #5b5e9e;">
+        <div class="h1b-icon">🔄</div>
+        <div class="h1b-content">
+          <strong>L-1 Visa（跨國公司內部調動）<span class="h1b-tag h1b-tag-high">高機率</span></strong>
+          進入有全球辦公室的大公司（Google、Apple、Intel、TSMC 等），先在海外分公司工作 1 年，再以 L-1 調回美國。確定性高，但需要公司配合。許多台灣人走這條路。
+        </div>
+      </div>
+
+      <div class="h1b-item" style="border-left:3px solid #5b5e9e;">
+        <div class="h1b-icon">🇨🇦</div>
+        <div class="h1b-content">
+          <strong>加拿大/新加坡跳板<span class="h1b-tag h1b-tag-high">高機率</span></strong>
+          先去加拿大工作（Express Entry 容易拿 PR），公司再以 L-1 調到美國。或先在新加坡辦公室工作再調。Google、Meta、Amazon 等大廠常用此路線安排國際員工。
+        </div>
+      </div>
+
+      <div class="h1b-item" style="border-left:3px solid #d4793a;">
+        <div class="h1b-icon">🎓</div>
+        <div class="h1b-content">
+          <strong>讀美國碩士（額外 20K 名額）<span class="h1b-tag h1b-tag-boost">提高機率</span></strong>
+          美國碩士以上學歷多一次 20K 進階名額的抽籤機會，等於每年兩次抽籤。1–2 年碩士投資可大幅提高中籤率。許多 EE 大學部畢業生選擇繼續讀碩士。
+        </div>
+      </div>
+
+      <div class="h1b-item" style="border-left:3px solid #d4793a;">
+        <div class="h1b-icon">💼</div>
+        <div class="h1b-content">
+          <strong>Day 1 CPT 碩士（邊工作邊讀書）<span class="h1b-tag h1b-tag-boost">提高機率</span></strong>
+          部分碩士項目允許入學第一天就開始 CPT 全職工作。等於延長合法工作時間，邊工作邊等 H1B 抽中。需注意學校是否被 USCIS 認可。
+        </div>
+      </div>
+
+    </div>
+
+    <button class="h1b-toggle" onclick="toggleH1B(this)">展開：EE 學生的實戰建議 ▼</button>
+    <div class="h1b-detail">
+      <div class="h1b-grid" style="margin-top:10px;">
+        <div class="h1b-item" style="border-left:3px solid #b56b8e;">
+          <div class="h1b-icon">📋</div>
+          <div class="h1b-content">
+            <strong>大學四年就開始準備</strong>
+            大一大二：爭取研究機會、累積論文（為 O-1/EB-1 鋪路）。大三：申請大廠暑期實習（為 return offer 鋪路）。大四：拿到 return offer 或碩士錄取。不要等畢業才開始規劃。
+          </div>
+        </div>
+        <div class="h1b-item" style="border-left:3px solid #b56b8e;">
+          <div class="h1b-icon">🏭</div>
+          <div class="h1b-content">
+            <strong>選對公司很重要</strong>
+            大型科技公司（Google、Apple、Intel、Qualcomm）H1B 辦理經驗豐富，有專門移民律師團隊。中小型公司可能不願意辦或沒經驗。面試時可以禮貌詢問公司的 H1B sponsorship 政策。
+          </div>
+        </div>
+        <div class="h1b-item" style="border-left:3px solid #b56b8e;">
+          <div class="h1b-icon">⚖️</div>
+          <div class="h1b-content">
+            <strong>多條路同時走</strong>
+            最穩妥的策略：OPT 期間在大廠工作（抽 H1B）+ 同時累積論文/專利（備 O-1）+ 讓公司評估 L-1 可能性。不要把所有希望放在單一路徑上。
+          </div>
+        </div>
+        <div class="h1b-item" style="border-left:3px solid #b56b8e;">
+          <div class="h1b-icon">🇹🇼</div>
+          <div class="h1b-content">
+            <strong>台灣人的特殊優勢</strong>
+            台灣公民可申請 E-2 投資簽證（美台友好通商航海條約）。另外，台灣護照持有者在國防/半導體相關職位的安全審查（security clearance）通常比中國公民容易通過，這在國家實驗室和航太公司是重要優勢。
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -2742,6 +2865,13 @@
 
 <script>
 let currentTier = 0;
+
+function toggleH1B(btn) {
+  const panel = btn.nextElementSibling;
+  panel.classList.toggle('open');
+  btn.classList.toggle('open');
+  btn.textContent = panel.classList.contains('open') ? '收起實戰建議 ▲' : '展開：EE 學生的實戰建議 ▼';
+}
 
 function toggleCard(btn) {
   const panel = btn.nextElementSibling;
