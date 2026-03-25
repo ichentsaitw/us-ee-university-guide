@@ -201,6 +201,7 @@
 <body>
 
 <header class="site-header">
+  <div style="font-size:0.72rem; opacity:0.6; margin-bottom:6px; letter-spacing:0.3px;"><span id="counter">0</span>次瀏覽</div>
   <h1>美國 EE 大學部前 30 選校指南</h1>
   <p>Semiconductor &middot; IC Design &middot; RF &middot; Power &#x2014; 專為台灣國際學生設計</p>
   <div class="header-nav">
@@ -2923,6 +2924,18 @@ function jumpTo(id) {
   const top = el.getBoundingClientRect().top + window.scrollY - offset;
   window.scrollTo({ top: top, behavior: 'smooth' });
 }
+</script>
+<script>
+// Supabase 計數器
+fetch('https://dypkogwrsqtonefaodiv.supabase.co/rest/v1/rpc/increment_page_view', {
+  method: 'POST',
+  headers: {
+    'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR5cGtvZ3dyc3F0b25lZmFvZGl2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MDg2NzMsImV4cCI6MjA4OTk4NDY3M30.Qqh4V7_yumS5TnrV5Eora6VrC3T1bjbdTl7Pd2s-Tw4',
+    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR5cGtvZ3dyc3F0b25lZmFvZGl2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0MDg2NzMsImV4cCI6MjA4OTk4NDY3M30.Qqh4V7_yumS5TnrV5Eora6VrC3T1bjbdTl7Pd2s-Tw4',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ site: 'us-ee-university-guide' })
+}).then(r => r.json()).then(c => { document.getElementById('counter').textContent = c; }).catch(() => {});
 </script>
 </body>
 </html>
