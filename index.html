@@ -191,6 +191,9 @@
   #sortable-table th.sortable:hover { background: #4a3a5a; cursor: pointer; }
   #sortable-table th.sortable::after { content: ' ⇅'; font-size: 10px; opacity: 0.6; }
   #sortable-table td { font-size: 12px; }
+  #sortable-table .tc, #sortable-table td:nth-child(1), #sortable-table td:nth-child(3),
+  #sortable-table td:nth-child(4), #sortable-table td:nth-child(5), #sortable-table td:nth-child(6),
+  #sortable-table td:nth-child(7), #sortable-table td:nth-child(8) { text-align: center; }
   #sortable-table td a { color: #7a5980; text-decoration: none; font-weight: 600; }
   #sortable-table td a:hover { text-decoration: underline; }
   #mega-table { scroll-margin-top: 150px; }
@@ -665,20 +668,20 @@
   <!-- 大型排名比較表 -->
   <div class="summary-box" id="mega-table" style="margin-bottom:24px;">
     <h2 style="font-size:1.1rem;color:#2d3142;margin-bottom:6px;">📊 多元排名比較表（點表頭排序，點排名連結看原始資料）</h2>
-    <p style="font-size:12px;color:var(--gray);margin-bottom:12px;">US News = 美國研究所 EE 排名 2025｜QS = QS 全球 EE 學科排名 2026｜THE = THE 全球工程排名 2026｜學費為國際生/州外生年費</p>
+    <p style="font-size:12px;color:var(--gray);margin-bottom:12px;">USN = US News 研究所 EE 2025｜QS = QS 全球 EE 2026｜THE = THE 全球工程 2026｜學費 = 國際生/州外生年費</p>
     <div style="overflow-x:auto;">
     <table class="summary-table" id="sortable-table">
       <thead>
         <tr>
-          <th class="sortable" data-col="0" data-type="num" style="cursor:pointer;">本站#▲</th>
+          <th class="sortable tc" data-col="0" data-type="num" style="cursor:pointer;">#</th>
           <th class="sortable" data-col="1" data-type="str" style="cursor:pointer;">學校</th>
-          <th>公/私</th>
-          <th class="sortable" data-col="3" data-type="num" style="cursor:pointer;">US News EE</th>
-          <th class="sortable" data-col="4" data-type="num" style="cursor:pointer;">QS EE</th>
-          <th class="sortable" data-col="5" data-type="num" style="cursor:pointer;">THE 工程</th>
-          <th class="sortable" data-col="6" data-type="money" style="cursor:pointer;">年學費 USD</th>
-          <th class="sortable" data-col="7" data-type="pct" style="cursor:pointer;">錄取率</th>
-          <th>STEM OPT 留美前景</th>
+          <th class="tc">公/私</th>
+          <th class="sortable tc" data-col="3" data-type="num" style="cursor:pointer;">USN</th>
+          <th class="sortable tc" data-col="4" data-type="num" style="cursor:pointer;">QS</th>
+          <th class="sortable tc" data-col="5" data-type="num" style="cursor:pointer;">THE</th>
+          <th class="sortable tc" data-col="6" data-type="money" style="cursor:pointer;">學費</th>
+          <th class="sortable tc" data-col="7" data-type="pct" style="cursor:pointer;">錄取</th>
+          <th>OPT 留美前景</th>
         </tr>
       </thead>
       <tbody>
