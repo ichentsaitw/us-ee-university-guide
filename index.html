@@ -191,9 +191,10 @@
   #sortable-table th.sortable:hover { background: #4a3a5a; cursor: pointer; }
   #sortable-table th.sortable::after { content: ' ⇅'; font-size: 10px; opacity: 0.6; }
   #sortable-table td { font-size: 12px; }
-  #sortable-table .tc, #sortable-table td:nth-child(1), #sortable-table td:nth-child(3),
+  #sortable-table .tc { text-align: center; }
+  #sortable-table td:nth-child(1), #sortable-table td:nth-child(3) { text-align: center; }
   #sortable-table td:nth-child(4), #sortable-table td:nth-child(5), #sortable-table td:nth-child(6),
-  #sortable-table td:nth-child(7), #sortable-table td:nth-child(8) { text-align: center; }
+  #sortable-table td:nth-child(7), #sortable-table td:nth-child(8) { text-align: right; padding-right: 14px; }
   #sortable-table td a { color: #7a5980; text-decoration: none; font-weight: 600; }
   #sortable-table td a:hover { text-decoration: underline; }
   #mega-table { scroll-margin-top: 150px; }
@@ -676,11 +677,11 @@
           <th class="sortable tc" data-col="0" data-type="num" style="cursor:pointer;">#</th>
           <th class="sortable" data-col="1" data-type="str" style="cursor:pointer;">學校</th>
           <th class="tc">公/私</th>
-          <th class="sortable tc" data-col="3" data-type="num" style="cursor:pointer;">USN</th>
-          <th class="sortable tc" data-col="4" data-type="num" style="cursor:pointer;">QS</th>
-          <th class="sortable tc" data-col="5" data-type="num" style="cursor:pointer;">THE</th>
-          <th class="sortable tc" data-col="6" data-type="money" style="cursor:pointer;">學費</th>
-          <th class="sortable tc" data-col="7" data-type="pct" style="cursor:pointer;">錄取</th>
+          <th class="sortable" data-col="3" data-type="num" style="cursor:pointer;text-align:right;padding-right:14px;">USN</th>
+          <th class="sortable" data-col="4" data-type="num" style="cursor:pointer;text-align:right;padding-right:14px;">QS</th>
+          <th class="sortable" data-col="5" data-type="num" style="cursor:pointer;text-align:right;padding-right:14px;">THE</th>
+          <th class="sortable" data-col="6" data-type="money" style="cursor:pointer;text-align:right;padding-right:14px;">學費</th>
+          <th class="sortable" data-col="7" data-type="pct" style="cursor:pointer;text-align:right;padding-right:14px;">錄取</th>
           <th>OPT 留美前景</th>
         </tr>
       </thead>
